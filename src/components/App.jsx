@@ -1,6 +1,6 @@
 export const App = () => {
   return (
-    <div src={scroll123455}
+    <div
       style={{
         height: '100vh',
         display: 'flex',
