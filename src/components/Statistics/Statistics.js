@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './Statistics.module.css';
 
 export default function Statistics({ title, stats }) {
@@ -6,20 +7,31 @@ export default function Statistics({ title, stats }) {
     <section className={s.statistics}>
       {renderTitle}
       <ul className={s.stat__list}>
-        {stats.map(stat => (
+        {stats.map(({ id, label, percentage }) => (
           <li
             className={s.item}
-            key={stat.id}
+            key={id}
             style={{ backgroundColor: randColor() }}
           >
-            <span className="label">{stat.label}</span>
-            <span className="percentage">{stat.percentage}</span>
+            <span className="label">{label}</span>
+            <span className="percentage">{percentage}</span>
           </li>
         ))}
       </ul>
     </section>
   );
 }
+
+Statistics.propTypes = {
+  // title: PropTypes.string.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
+};
 
 // Random color
 function randColor() {
@@ -28,11 +40,3 @@ function randColor() {
   let b = Math.floor(Math.random() * 256);
   return 'rgba(' + r + ',' + g + ',' + b + ',0.8)';
 }
-
-// [
-//   { id: 'id-1', label: '.docx', percentage: 22 },
-//   { id: 'id-2', label: '.pdf', percentage: 4 },
-//   { id: 'id-3', label: '.mp3', percentage: 17 },
-//   { id: 'id-4', label: '.psd', percentage: 47 },
-//   { id: 'id-5', label: '.pdf', percentage: 10 },
-// ];
