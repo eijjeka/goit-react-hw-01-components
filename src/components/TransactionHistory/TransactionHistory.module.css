@@ -1,0 +1,12 @@
+.transaction {
+  margin-top: 40px;
+  width: 600px;
+}
+.transaction__head {
+  padding: 5px;
+  font-size: 20px;
+}
+.transaction__row {
+  text-align: center;
+  border: 1px solid black;
+}
